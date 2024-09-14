@@ -167,6 +167,7 @@ def main():
             
             if 'review_body' in df.columns:
                 reviews = df['review_body'].tolist()
+                total_reviews = len(reviews)  # Total number of reviews
 
                 # Check if 'star_rating' column is present
                 if 'star_rating' in df.columns:
@@ -177,6 +178,19 @@ def main():
 
                 # Get predictions
                 predictions = predict_and_display(reviews)
+
+                # Count positive and negative reviews
+                positive_count = sum(predictions)
+                negative_count = total_reviews - positive_count
+
+                # Display the prediction summary with colored counts and total reviews
+                st.markdown(
+                    f"<p style='font-size:18px;'>It is predicted that there are "
+                    f"<span style='color:green; font-weight:bold;'>{positive_count} positive</span> reviews and "
+                    f"<span style='color:red; font-weight:bold;'>{negative_count} negative</span> reviews "
+                    f"out of <strong>{total_reviews}</strong> reviews in the uploaded file.</p>",
+                    unsafe_allow_html=True
+                )
 
                 # Display the result in a pie chart
                 display_pie_chart(predictions)
