@@ -14,7 +14,7 @@ nltk.download('punkt_tab')  # Do not remove this as requested
 nltk.download('stopwords')
 
 # Load saved models and vectorizer
-model = joblib.load('random-forest.joblib')
+model = joblib.load('randomforest_model.joblib')
 tfidf_vectorizer_loaded = joblib.load('tfidf_vectorizer.joblib')
 
 # Initialize the stemmer and stop words
