@@ -148,7 +148,13 @@ def main():
                 # Display the result
                 for i, review in enumerate(reviews):
                     st.write(f"Review {i+1}: {review}")
-                    st.write(f"Predicted Sentiment: {'Positive' if predictions[i] == 1 else 'Negative'}")
+                    
+                    # Check the sentiment and display it with corresponding color
+                    sentiment = 'Positive' if predictions[i] == 1 else 'Negative'
+                    color = 'green' if predictions[i] == 1 else 'red'
+                    
+                    # Use markdown to display colored sentiment
+                    st.markdown(f"**The predicted sentiment is:** <span style='color:{color}; font-weight:bold;'>{sentiment}</span>", unsafe_allow_html=True)
             else:
                 st.error("Please enter a review for prediction.")
     
