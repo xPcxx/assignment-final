@@ -147,7 +147,7 @@ def main():
                 
                 # Display the result
                 for i, review in enumerate(reviews):
-                    st.write(f"Review {i+1}: {review}")
+                    st.write(f"Review : {review}")
                     
                     # Check the sentiment and display it with corresponding color
                     sentiment = 'Positive' if predictions[i] == 1 else 'Negative'
