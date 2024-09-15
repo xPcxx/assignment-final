@@ -165,12 +165,8 @@ def main():
     else:
         st.subheader("Upload File")
         
-        # File upload option with reset functionality
+        # File upload option
         uploaded_file = st.file_uploader("Choose a file (CSV format)", type=["csv"], key='file_uploader')
-        
-        if st.button('Reset File Uploader'):
-            st.session_state.uploaded_file = None
-            st.experimental_rerun()  # Refresh the app to reset the file uploader
         
         if uploaded_file is not None:
             st.session_state.uploaded_file = uploaded_file
@@ -225,6 +221,9 @@ def main():
                     st.write("Average star rating information is not available.")
             else:
                 st.error("The file does not contain the 'review_body' column.")
+
+
+if __name__ == '__main__':
 
 
                 
