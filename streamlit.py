@@ -133,10 +133,6 @@ def display_bar_charts(avg_star_rating, num_verified, num_unverified):
 def main():
     st.title("Product Review Sentiment Analysis")
     
-    # Initialize session state for file upload
-    if 'uploaded_file' not in st.session_state:
-        st.session_state.uploaded_file = None
-    
     st.sidebar.title("Options")
     option = st.sidebar.selectbox("Choose how to input data", ["Enter text", "Upload file"])
 
@@ -163,14 +159,10 @@ def main():
                 st.error("Please enter a review for prediction.")
     
     else:
-        st.subheader("Upload File")
-        
         # File upload option
-        uploaded_file = st.file_uploader("Choose a file (CSV format)", type=["csv"], key='file_uploader')
+        uploaded_file = st.file_uploader("Choose a file (CSV format)", type=["csv"])
         
         if uploaded_file is not None:
-            st.session_state.uploaded_file = uploaded_file
-            
             df = pd.read_csv(uploaded_file, encoding='ISO-8859-1')
             
             if 'review_body' in df.columns:
@@ -222,5 +214,6 @@ def main():
             else:
                 st.error("The file does not contain the 'review_body' column.")
 
-
+                
 if __name__ == '__main__':
+    main()   
